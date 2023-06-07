@@ -8,14 +8,15 @@ vim.keymap.set("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
 
 -- TERMINAL SETUP
 require("toggleterm").setup({
-	direction = "horizontal",
+	direction = "float",
 	size = 40,
-	open_mapping = "<leader>pt", 
+	open_mapping = "<C-`>", 
     autochdir = true,
-    shade_terminals = false,
+    shade_terminals = true,
     highlights = {
     Normal = {
       guibg = 'black' 
     }
   }
 })
+
