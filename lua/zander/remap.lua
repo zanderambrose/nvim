@@ -10,13 +10,12 @@ vim.keymap.set("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
 require("toggleterm").setup({
     direction = "float",
     size = 40,
-    open_mapping = "<leader>pt", 
+    open_mapping = "<leader>pt",
     autochdir = true,
     shade_terminals = true,
     highlights = {
         Normal = {
-            guibg = 'black' 
+            guibg = 'black'
         }
     }
 })
-
