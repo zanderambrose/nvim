@@ -160,6 +160,11 @@ _G.packer_plugins = {
     path = "/Users/alexanderambrose/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/Users/alexanderambrose/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
+  },
   ["vscode.nvim"] = {
     loaded = true,
     path = "/Users/alexanderambrose/.local/share/nvim/site/pack/packer/start/vscode.nvim",
