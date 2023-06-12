@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
             {
-                              -- Optional
+                -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -36,9 +36,9 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
+            { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         },
 
         use { "akinsho/toggleterm.nvim", tag = '*' },
@@ -47,6 +47,15 @@ return require('packer').startup(function(use)
             config = function() require("nvim-autopairs").setup {} end
         },
 
-        use { "tpope/vim-commentary" }
+        use { "tpope/vim-commentary" },
+        use({
+            "kylechui/nvim-surround",
+            tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+            config = function()
+                require("nvim-surround").setup({
+                    -- Configuration here, or leave empty to use defaults
+                })
+            end
+        }),
     }
 end)
