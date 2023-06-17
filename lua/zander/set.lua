@@ -29,6 +29,3 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-
-vim.cmd([[highlight TabLine guifg=DarkGray guibg=Black]])
-vim.cmd([[highlight TabLineSel guifg=DarkGray guibg=DarkBlue]])
