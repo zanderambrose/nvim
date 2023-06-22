@@ -25,3 +25,6 @@ require("toggleterm").setup({
 })
 
 vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float(0, {scope='line'})<CR>", { noremap = true })
+
+-- Prettier format
+vim.keymap.set("n", "<leader>for", ":!npx prettier --write '%'", { noremap = true })
