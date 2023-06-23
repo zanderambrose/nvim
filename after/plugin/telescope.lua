@@ -8,6 +8,8 @@ require('telescope').setup {
         layout_config = {
             horizontal = {
                 preview_cutoff = 0,
+                width = 0.99,
+                height = 0.99,
             },
         },
     },
