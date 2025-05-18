@@ -9,7 +9,6 @@ return {
                 callback = function(ev)
                     local bufnr = ev.buf
                     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-                    print(client)
 
                     local opts = { buffer = bufnr, noremap = true, silent = true }
 
@@ -46,6 +45,12 @@ return {
             lspconfig.ts_ls.setup({
                 filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
                 root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+            })
+
+            -- CPP LSP
+            lspconfig.clangd.setup({
+                filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+                root_markers = { ".clangd", ".clang-tidy", ".clang-format", "compile_commands.json", "compile_flags.txt", "configure.ac", ".git" }
             })
         end
     }
