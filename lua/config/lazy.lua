@@ -47,7 +47,7 @@ vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, desc = 'Copy to system cli
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-	    { "EdenEast/nightfox.nvim", config = function() vim.cmd.colorscheme "Carbonfox" end },
+        { "EdenEast/nightfox.nvim", config = function() vim.cmd.colorscheme "Carbonfox" end },
         { import = "plugins" },
     },
     -- automatically check for plugin updates

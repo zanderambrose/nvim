@@ -28,5 +28,6 @@ return {
     vim.keymap.set('n', '<leader>pa', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
+    vim.keymap.set('n', 'gr', builtin.lsp_references, {})
   end
 }
