@@ -30,10 +30,20 @@ vim.opt.expandtab = true
 vim.keymap.set("n", "<leader>]", ":tabnext<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>[", ":tabprevious<CR>", { noremap = true })
 
--- split screen and navigation
+-- split screen
 vim.keymap.set("n", "<leader>v", ":vsplit<CR><C-w>l", { noremap = true })
+
+-- Window Navigation
 vim.keymap.set("n", "<leader>h", ":wincmd h<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>j", ":wincmd j<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>k", ":wincmd k<CR>", { noremap = true })
+
+-- Window Resizing
+vim.keymap.set("n", "<leader><Right>", ":vertical resize +5<CR>")
+vim.keymap.set("n", "<leader><Left>", ":vertical resize -5<CR>")
+vim.keymap.set("n", "<leader><Up>", ":resize +2<CR>")
+vim.keymap.set("n", "<leader><Down>", ":resize -2<CR>")
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float(0, {scope='line'})<CR>", { noremap = true })
