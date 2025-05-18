@@ -25,6 +25,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.o.wrap = false
 
 -- Tabs
 vim.keymap.set("n", "<leader>]", ":tabnext<CR>", { noremap = true })
