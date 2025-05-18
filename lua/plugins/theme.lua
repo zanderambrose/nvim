@@ -14,12 +14,15 @@ return {
                     bg2 = "#1a1a1a",
                 },
             },
+            groups = {
+                carbonfox = {
+                    ["@variable"] = { fg = "#e0af68" },
+                    Visual = { bg = "#444444" },
+                    Normal = { bg = "#0a0a0a" },
+                },
+            },
         })
 
         vim.cmd("colorscheme carbonfox")
-
-        -- Custom highlights
-        vim.api.nvim_set_hl(0, "Normal", { bg = "#0a0a0a" })
-        vim.api.nvim_set_hl(0, "Visual", { bg = "#444444" })
     end,
 }
