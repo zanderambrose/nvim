@@ -41,10 +41,13 @@ vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float(0, {scope='line
 -- Prettier format
 vim.keymap.set("n", "<leader>pw", ":w | !npx prettier --write '%'<CR><CR>", { noremap = true })
 
+-- Copy to clipboard
+vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, desc = 'Copy to system clipboard' })
+
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-	{ "EdenEast/nightfox.nvim", config = function() vim.cmd.colorscheme "Carbonfox" end },
+	    { "EdenEast/nightfox.nvim", config = function() vim.cmd.colorscheme "Carbonfox" end },
         { import = "plugins" },
     },
     -- automatically check for plugin updates
