@@ -37,12 +37,29 @@ return {
             lspconfig.lua_ls.setup({
                 settings = {
                     Lua = {
-                        diagnostics = {
-                            globals = { "vim" }, -- Tell the LSP that `vim` is a global
+                        runtime = {
+                            -- Tell the server you're using Neovim's Lua
+                            version = "LuaJIT",
+                            path = vim.split(package.path, ";"),
                         },
+                        diagnostics = {
+                            -- Recognize the `vim` global
+                            globals = { "vim" },
+                        },
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files
+                            library = {
+                                vim.env.VIMRUNTIME,
+                                "${3rd}/luv/library", -- For `vim.loop`
+                                "${3rd}/busted/library", -- For tests, optional
+                            },
+                            checkThirdParty = false,
+                        },
+                        telemetry = { enable = false },
                     },
                 },
             })
+
 
             -- TypeScript LSP
             lspconfig.ts_ls.setup({
