@@ -5,7 +5,7 @@ return {
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "go", "gomod", "gowork", "gosum", "gotmpl", "javascript", "typescript", "html", "ruby", "python", "sql", "terraform", "hcl", "c_sharp", "cpp", "dockerfile", "json5"},
+            ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "go", "gomod", "gowork", "gosum", "gotmpl", "javascript", "typescript", "html", "ruby", "python", "sql", "terraform", "hcl", "c_sharp", "cpp", "dockerfile", "json5", "prisma"},
             sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },
