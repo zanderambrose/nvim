@@ -53,6 +53,9 @@ vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float(0, {scope='line
 -- Prettier format
 vim.keymap.set("n", "<leader>pw", ":w | !npx prettier --write '%'<CR><CR>", { noremap = true })
 
+-- ES lint fix
+vim.keymap.set("n", "<leader>pe", ":w | !npx eslint --fix %<CR>", { noremap = true })
+
 -- Copy to clipboard
 vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, desc = 'Copy to system clipboard' })
 
