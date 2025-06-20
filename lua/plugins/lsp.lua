@@ -2,26 +2,41 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            'saghen/blink.cmp'
+            'saghen/blink.cmp',
+            'nvim-telescope/telescope.nvim' -- Add telescope as dependency
         },
         config = function()
             local lspconfig = require("lspconfig")
 
-            -- Set up global on_attach logic for all LSPs
+            local function go_to_definition_with_telescope()
+                local params = vim.lsp.util.make_position_params(0, 'utf-8')
+                vim.lsp.buf_request(0, 'textDocument/definition', params, function(err, result, _, _)
+                    if err then
+                        vim.notify('Error getting definition: ' .. err.message, vim.log.levels.ERROR)
+                        return
+                    end
+                    if not result or vim.tbl_isempty(result) then
+                        vim.notify('No definition found', vim.log.levels.INFO)
+                        return
+                    end
+                    if #result == 1 then
+                        vim.lsp.util.show_document(result[1], 'utf-8')
+                    else
+                        require('telescope.builtin').lsp_definitions()
+                    end
+                end)
+            end
+
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(ev)
                     local bufnr = ev.buf
                     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
                     local opts = { buffer = bufnr, noremap = true, silent = true }
 
-                    -- LSP Keymaps
-                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+                    vim.keymap.set('n', 'gd', go_to_definition_with_telescope, opts)
                     vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
                     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
                     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-                    -- References keymap is set in telescope
-                    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                     vim.keymap.set('n', '<leader>f', function()
                         vim.lsp.buf.format { async = true }
                     end, opts)
@@ -43,14 +58,14 @@ return {
                             path = vim.split(package.path, ";"),
                         },
                         diagnostics = {
-                            -- Recognize the `vim` global
+                            -- Recognize the vim global
                             globals = { "vim" },
                         },
                         workspace = {
                             -- Make the server aware of Neovim runtime files
                             library = {
                                 vim.env.VIMRUNTIME,
-                                "${3rd}/luv/library", -- For `vim.loop`
+                                "${3rd}/luv/library", -- For vim.loop
                                 "${3rd}/busted/library", -- For tests, optional
                             },
                             checkThirdParty = false,
@@ -60,11 +75,11 @@ return {
                 },
             })
 
-
             -- TypeScript LSP
             lspconfig.ts_ls.setup({
                 filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
                 root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+
             })
 
             -- CPP LSP
