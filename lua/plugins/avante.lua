@@ -5,15 +5,22 @@ return {
     opts = {
         -- add any opts here
         -- for example
-        provider = "openai",
-        openai = {
-            endpoint = "https://api.openai.com/v1",
-            model = "gpt-4o",       -- your desired model (or use gpt-4o, etc.)
+        provider = "gemini",
+        gemini = {
+            endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+            model = "gemini-2.5-flash",
             timeout = 30000,        -- Timeout in milliseconds, increase this for reasoning models
             temperature = 0,
-            max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-            --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+            max_tokens= 4096,
         },
+        -- openai = {
+        --     endpoint = "https://api.openai.com/v1",
+        --     model = "gpt-4o",       -- your desired model (or use gpt-4o, etc.)
+        --     timeout = 30000,        -- Timeout in milliseconds, increase this for reasoning models
+        --     temperature = 0,
+        --     max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        --     --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+        -- },
         selector = {
             --- @alias avante.SelectorProvider "fzf_lua"
             provider = "fzf_lua",
